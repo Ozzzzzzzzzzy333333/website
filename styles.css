@@ -1,0 +1,217 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Loader Glitch Effect */
+#initial-loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
+}
+
+#glitch-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+    animation: glitch 0.7s infinite alternate;
+    white-space: nowrap;
+}
+
+/* Glitch Animation */
+@keyframes glitch {
+    0% {
+        text-shadow: 4px 4px red, -4px -4px blue;
+    }
+    50% {
+        text-shadow: -4px -4px red, 4px 4px rgb(129, 14, 230);
+    }
+    100% {
+        text-shadow: 2px 2px lime, -2px -2px magenta;
+    }
+}
+
+/* Page Transition */
+#main-body {
+    opacity: 0;
+    display: block; /* Ensure it's displayed */
+    transform: translateY(30px);
+    animation: glitchFadeIn 1s ease-in-out forwards;
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 4px 4px red, -4px -4px blue;
+        opacity: 1;
+    }
+    25% {
+        text-shadow: -4px -4px red, 4px 4px rgb(129, 14, 230);
+    }
+    50% {
+        text-shadow: 2px 2px lime, -2px -2px magenta;
+        opacity: 1;
+    }
+    75% {
+        text-shadow: -3px 3px cyan, 3px -3px yellow;
+    }
+    100% {
+        text-shadow: none;
+        opacity: 1;
+    }
+}
+
+@keyframes glitchFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+        filter: brightness(0.5) contrast(1.5);
+    }
+    30% {
+        opacity: 0.3;
+        transform: translateY(5px);
+        filter: hue-rotate(15deg);
+    }
+    60% {
+        opacity: 0.7;
+        transform: translateY(2px);
+        filter: hue-rotate(-10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: none;
+    }
+}
+
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #290135, #ae02b1);
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* Intro Section */
+.intro-section {
+    display: flex;
+    flex-direction: column; /* Ensure the text is stacked vertically */
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    text-align: center;
+    position: relative; /* Positioning context for the tree */
+}
+
+/* Tree Animation (Replacing Image) */
+.tree {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    z-index: -1; /* Puts it in the background */
+    opacity: 1;
+}
+
+.tree svg {
+    width: 100%;
+    height: 100%;
+}
+
+.tree > div {
+    width: calc(100% - 1vw);
+}
+
+.tree > div[style="--a: 46;"] {
+    width: calc(100% - 10vw);
+}
+
+.tree:hover,
+.tree:active {
+    --deg: var(--a);
+}
+
+.tree p {
+    --angle: calc(var(--deg) * 0.01745329251);
+    --sin: calc(var(--angle) - (var(--angle) * var(--angle) * var(--angle)) / 6 + (var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 120 - (var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 5040 + (var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 362880);
+    --cos: calc(1 - (var(--angle) * var(--angle)) / 2 + (var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 24 - (var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 720 + (var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle)) / 40320);
+    width: 20vmin;
+    height: 20vmin;
+    background: black;
+    position: absolute;
+    left: calc(-49vw - 10vmin);
+    top: 65vh;
+    pointer-events: none;
+}
+
+.tree b {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: inherit;
+    transform-origin: 0 0;
+}
+
+.tree b:nth-child(1) {
+    transform: rotate(calc(var(--deg) * 1deg * -1)) scale(var(--cos)) translateY(-100%);
+}
+
+.tree b:nth-child(2) {
+    transform-origin: 100% 0;
+    transform: rotate(calc(90deg - var(--deg) * 1deg)) scale(var(--sin)) translateY(-100%);
+}
+
+/* Intro Text */
+.intro-text {
+    position: relative;
+    z-index: 1; /* Ensure this content stays on top */
+}
+
+.intro-text h2 {
+    color: #ae02b1;
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+}
+
+.card h5 {
+    color: #ae02b1;
+}
+
+.btn.btn-primary {
+    color: #ae02b1;
+    background-color: #ae02b1;
+}
+.col-md-4{
+    transition: transform .2s;
+}
+.col-md-4:hover{
+    transform: scale(1.2);
+}
