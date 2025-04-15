@@ -42,11 +42,27 @@
         text-shadow: 2px 2px lime, -2px -2px magenta;
     }
 }
-img {
+.profile-pic-wrapper {
+    float: right;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic-wrapper:hover {
+    transform: scale(1.05);
+}
+
+.profile-pic {
+    width: 250px;
+    height: 188px;
+    object-fit: cover;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+}
+
 /* Page Transition */
 #main-body {
     opacity: 0;
