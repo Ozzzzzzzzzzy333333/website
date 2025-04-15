@@ -42,7 +42,11 @@
         text-shadow: 2px 2px lime, -2px -2px magenta;
     }
 }
-
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 /* Page Transition */
 #main-body {
     opacity: 0;
