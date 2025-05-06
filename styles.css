@@ -51,18 +51,45 @@
     overflow: hidden;
     transition: transform 0.3s ease;
 }
+.img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+.profile-pic-wrapper {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
 
 .profile-pic-wrapper:hover {
     transform: scale(1.05);
 }
 
 .profile-pic {
-    width: 250px;
-    height: 188px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 50%;
 }
 
+.intro-text {
+    flex: 1;
+    min-width: 250px;
+}
+.intro-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 2rem 0;
+}
 /* Page Transition */
 #main-body {
     opacity: 0;
@@ -123,7 +150,12 @@
     text-align: center;
     padding: 100px 20px;
 }
-
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
 .hero h1 {
     font-size: 3rem;
 }
